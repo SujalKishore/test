@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script>
+        function login() {
+            var username = document.getElementById("login-username").value;
+            var password = document.getElementById("login-password").value;
+            
+            // Get user data from localStorage
+            var users = JSON.parse(localStorage.getItem("users")) || [];
+            
+            // Check if the entered username and password match any user
+            var user = users.find(function (user) {
+                return user.username === username && user.password === password;
+            });
+
+            if (user) {
+                alert("Logged in successfully!");
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form>
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" required><br>
+        <label for "login-password">Password:</label>
+        <input type="password" id="login-password" required><br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+    <p>Don't have an account? <a href="index.html">Register</a></p>
+</body>
+</html>
